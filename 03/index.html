@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+</head>
+<body>
+	<!--cria o formuario para digitar as palavras-->
+      <form id="formulario">
+        <label for="fname">Digite aqui:</label>
+        <input type="text" id="campo">
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+		//cria as variaveis do formulario
+var form = document.getElementById('formulario');
+var campo = document.getElementById('campo');
+
+form.addEventListener('submit', function(e) {
+	//cria o alerta que dis a quantidadd de caracteres
+    var tamanho = campo.value;
+    alert("Você digitou " + tamanho.length + " caracteres");
+
+});
+    </script>
+</body>
+</html>

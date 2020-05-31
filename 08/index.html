@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08</title>
+</head>
+<body>  <!--cria o formulario de adesão-->
+    <td> <input type="text" placeholder="Nome:"></td>
+    <td><input type="text" maxlength="11" placeholder="Cpf:"></td>
+    <td><input type="text" placeholder="Produto:"></td>
+    <td><input type="text" placeholder="Descrição:" ></td>
+    <td><input type="file" placeholder="Foto do Produto:"></td>
+    <p>Categoria:<select id="select1"></select></p>
+    <td><input name="submit" type="submit" value=" Incluir "></td>
+    
+    <script> //cria os componentes da caixa de categorias
+        var categoria = [
+    'A',
+    'B',
+    'C'];
+
+
+    categoria.forEach(function(item){
+    addOption(item)
+});
+
+ function addOption(valor) {//carrega as opções do Array para dentro da caixa seletora
+    var option = new Option(valor, valor);
+    var select = document.getElementById("select1");
+    select.add(option);
+}
+    </script>
+</body>
+</html>

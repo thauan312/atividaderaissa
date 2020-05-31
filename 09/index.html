@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>09</title>
+	</head>
+	<body> <!--cria o formulario de adesão-->
+		<td> <input type="text" placeholder="Nome:"></td>
+		<td><input type="text" maxlength="11" placeholder="Cpf:"></td>
+		<td><input type="text" placeholder="Produto:"></td>
+		<td><input type="text" placeholder="Descrição:" ></td>
+		<td><input type="file" placeholder="Foto do Produto:"></td>
+		<p>Categoria:</p><select id="categorias" style="width: 100px;"></select>
+		<form id="cat" style="margin-top: 10px;">
+		<p>Adcionar nova categoria:</p><input id="nomedacategoria" placeholder="Nome da categoria" />
+		<input type="submit" value="Adicionar" />
+		</form>
+
+		<script> //cria os componentes da caixa de categorias
+			const categorias = ["A", "B", "C"];
+			const cat = document.getElementById("cat");
+			const NomeCategoria = document.getElementById("nomedacategoria");
+			cat.addEventListener("submit", (e) => {
+				e.preventDefault();
+				categorias.push(NomeCategoria.value);
+				criarlistacategorias();
+			});
+            //função para adcionar nova categoria
+			function criarlistacategorias() {
+				const ListaCategoria = document.getElementById("categorias");
+				ListaCategoria.innerHTML = "";
+				categorias.forEach((item) => {
+					const option = new Option(item, item);
+					ListaCategoria.add(option);
+				});
+			}
+
+			criarlistacategorias();
+		</script>
+	</body>
+</html>

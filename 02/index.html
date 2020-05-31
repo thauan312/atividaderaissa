@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02</title>
+</head>
+<body>
+    <form id="formulario">
+        <label for="fname">Nome:</label> <!--cria a caixa para nome-->
+        <input type="text" id="n1">
+        <label for="fname">Sobrenome:</label> <!--cria a caixa para sobrenome-->
+        <input type="text" id="n2">
+        <input type="submit" value="Enviar"> <!--cria a um botao para enviar-->
+    </form>
+    <script> 
+		//cria as variaveis para gravar o que é digitado
+        var form = document.getElementById('formulario');
+        var n1 = document.getElementById('n1');
+        var n2 = document.getElementById('n2');
+
+form.addEventListener('submit', function(e) {
+    // alerta o campo
+    var first = (n1.value);
+    var last = (n2.value);
+    alert("O seu nome é "+first+ " " +last);
+});
+    </script>
+    
+</body>
+</html>

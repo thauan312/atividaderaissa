@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>07</title>
+	</head>
+	<body>
+		<form id="formulario"> <!--formulario para nome e idade-->
+			<input id="nome" />
+			<input type="idade" id="idade" />
+			<input type="submit" value="Enviar" />
+		</form>
+			<!--cria as caixas de ordenação e os nomes "nome" e "idade"-->
+		<table style="margin-top: 10px;">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Idade</th>
+				</tr>
+			</thead>
+
+			<tbody id="tbody"></tbody>
+			<tfoot>
+				<tr>
+					<th scope="row">
+						<input
+							type="button"
+							id="ordernome"
+							value="Ordernar por nome"
+						/>
+					</th>
+					<th scope="row">
+						<input
+							type="button"
+							id="orderidade"
+							value="Ordernar por idade"
+						/>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+		<script> //cria as variaveis do formulario
+			const frm = document.getElementById("formulario");
+			const tbody = document.getElementById("tbody");
+
+			const camponome = document.getElementById("nome");
+			const campoidade = document.getElementById("idade");
+
+			const ordernome = document.getElementById("ordernome");
+			const orderidade = document.getElementById("orderidade");
+
+			let listInfo = [];
+
+			frm.addEventListener("submit", (e) => {
+				e.preventDefault();
+
+				listInfo.push({ nome: camponome.value, idade: campoidade.value });
+				renderListTable(camponome.value, campoidade.value);
+			});
+			//cria o evento para ordenação por nome
+			ordernome.addEventListener("click", () => {
+				let newList = listInfo.sort((a, b) => {
+					if (a.nome > b.nome) {
+						return 1;
+					}
+					if (a.nome < b.nome) {
+						return -1;
+					}
+
+					return 0;
+				});
+
+				if (newList.length > 0) {
+					tbody.innerHTML = "";
+
+					for (const i in newList) {
+						renderListOrderBy(newList);
+					}
+				}
+			});
+			//cria o evento para ordenação por idade
+
+			orderidade.addEventListener("click", () => {
+				let newList = listInfo.sort((a, b) => {
+					if (a.idade > b.idade) {
+						return 1;
+					}
+					if (a.idade < b.idade) {
+						return -1;
+					}
+
+					return 0;
+				});
+
+				if (newList.length > 0) {
+					renderListOrderBy(newList);
+				}
+			});
+			//criação da função para exibir quando ordenado 
+			function renderListTable(nome, idade) {
+				tbody.innerHTML += `
+			         <tr>
+			           <td>${nome}</td>
+			           <td>${idade}</td>
+			         </tr>
+			       `;
+			}
+			function renderListOrderBy(newList) {
+				tbody.innerHTML = "";
+
+				for (const i in newList) {
+					const list = newList[i];
+
+					tbody.innerHTML += ` 
+            <tr>
+              <td>${list.nome}</td>
+              <td>${list.idade}</td>
+            </tr>
+			    `;
+				}
+			}
+		</script>
+	</body>
+</html>

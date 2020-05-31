@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04</title>
+</head>
+<body>
+    <body>
+        <img id="luz" src="apagada.jpg"> <!--pega a imagem da luz apagada-->
+
+        <script>
+            function trocar(){
+				//cria as variaveis para cada lampada
+				var imagem = document.getElementById('luz').src;
+				var acesa = 'acesa.jpg';
+				var apagada = 'apagada.jpg';
+
+if(imagem == apagada){ //cria as condições para troca de imagem
+    document.getElementById('luz').src = apagada;
+}else{
+    document.getElementById('luz').src = acesa;
+}
+}
+document.getElementById("luz").addEventListener("click", trocar); //cria o evento pra trocar imagem ao clicar
+        </script>
+</body>
+</html>
